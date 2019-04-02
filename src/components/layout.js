@@ -4,11 +4,11 @@
  *
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
-
-import React from "react"
+/** @jsx jsx */
+import React from 'react'
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
-
+import { Global, jsx, css } from '@emotion/core';
 import Header from "./header"
 import "./layout.css"
 
@@ -25,6 +25,18 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
+        <Global styles={css`
+            a {
+              color: #444;
+              font-weight: bold;
+              text-decoration: none;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          `}
+        />
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -35,9 +47,9 @@ const Layout = ({ children }) => (
           }}
         >
           <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}
-          </footer>
+          {/* <footer>
+            DobladoV
+          </footer> */}
         </div>
       </>
     )}
