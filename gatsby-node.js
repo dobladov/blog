@@ -31,8 +31,6 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      console.log(node.frontmatter.pat);
-
       createPage({
         path: node.frontmatter.path,
         component: blogPostTemplate,
