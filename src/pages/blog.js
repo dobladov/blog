@@ -28,17 +28,21 @@ const SecondPage = () => (
     <Layout>
       <SEO title="Page two" />
       <h1>List of blog posts</h1>
-      <ul>
-        {posts.map(post => (
-          <li key={post.node.frontmatter.path}>
-          <Link
-            to={post.node.frontmatter.path}
-          >
-            {post.node.frontmatter.title}
-          </Link> <br/>
-          </li>
-        ))}
-      </ul>
+      {posts.length > 0 ? (
+        <ul>
+          {posts.map(post => (
+            <li key={post.node.frontmatter.path}>
+            <Link
+              to={post.node.frontmatter.path}
+            >
+              {post.node.frontmatter.title}
+            </Link> <br/>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div>No posts yet</div>
+      )}
       <br/>
       <Link to="/">Go back to the homepage</Link>
 
